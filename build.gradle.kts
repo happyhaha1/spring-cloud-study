@@ -5,8 +5,8 @@ plugins {
     `maven-publish`
 }
 allprojects {
-    group = "cn.kxlove"
-    version = "1.0-SNAPSHOT"
+    group = project.property("project_group")!!
+    version = project.property("project_version")!!
 
     repositories {
         mavenLocal()
@@ -21,7 +21,8 @@ subprojects {
     }
 
     configure<JavaPluginConvention> {
-        sourceCompatibility = JavaVersion.VERSION_1_8
+        setSourceCompatibility(project.property("project_jdk")!!)
+        setTargetCompatibility(project.property("project_jdk")!!)
     }
 
     if (JAVA_PROJECTS.contains(project.name)) {
@@ -55,5 +56,5 @@ subprojects {
 //}
 task("testGroup") {
 //    logger.info("项目group:{}",project.group.toString())
-    println("项目版本："+project.group.toString())
+    println("项目版本："+project.property("project_group"))
 }
