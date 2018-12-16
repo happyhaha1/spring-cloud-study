@@ -1,39 +1,45 @@
-val JAVA_PROJECTS = arrayOf("nacos-discovery")
+val JAVA_PROJECTS = arrayOf()
+val JAVA_SPRING_PROJECTS = arrayOf("nacos-discovery-provider", "nacos-discovery-consumer")
+
 plugins {
     java
-    kotlin("jvm") version Versions.kotlin
+    kotlin("jvm") version "1.3.10"
+    id("org.springframework.boot") version Versions.springBoot apply false
     `maven-publish`
+    idea
+    id("io.spring.dependency-management") version Versions.springManagement
 }
+
 allprojects {
-    group = project.property("project_group")!!
-    version = project.property("project_version")!!
+    apply(plugin = "idea")
+    group = ProjectConstant.group
+    version = ProjectConstant.version
 
     repositories {
         mavenLocal()
         mavenCentral()
     }
+    idea.module {
+        outputDir = file("build/classes/main")
+        testOutputDir = file("build/classes/test")
+    }
 }
 
 subprojects {
-    apply {
-        plugin("maven-publish")
-        plugin("java")
-    }
+    if (JAVA_PROJECTS.contains(project.name) || JAVA_SPRING_PROJECTS.contains(project.name)) {
+        apply {
+            plugin("maven-publish")
+            plugin("java")
+        }
 
-    configure<JavaPluginConvention> {
-        setSourceCompatibility(project.property("project_jdk")!!)
-        setTargetCompatibility(project.property("project_jdk")!!)
-    }
-
-    if (JAVA_PROJECTS.contains(project.name)) {
+        configure<JavaPluginConvention> {
+            setSourceCompatibility(ProjectConstant.javaVerion)
+            setTargetCompatibility(ProjectConstant.javaVerion)
+        }
         val sourceJar = task("sourceJar", Jar::class) {
             dependsOn(tasks["classes"])
             classifier = "sources"
             from(sourceSets.main.get().allSource)
-        }
-
-        dependencies {
-            implementation(Libs.rxjava)
         }
 
         publishing {
@@ -45,6 +51,18 @@ subprojects {
                     from(components["java"])
                     artifact(sourceJar)
                 }
+            }
+        }
+    }
+
+    if (JAVA_SPRING_PROJECTS.contains(project.name)) {
+        apply(plugin = "org.springframework.boot")
+        apply(plugin = "io.spring.dependency-management")
+
+        dependencyManagement {
+            imports {
+                mavenBom(Libs.springCloudBom)
+                mavenBom(Libs.springCloudAliBabaBom)
             }
         }
     }
