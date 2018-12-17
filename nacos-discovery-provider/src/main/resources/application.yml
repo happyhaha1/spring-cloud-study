@@ -1,7 +1,0 @@
-spring:
-  profiles:
-    active: company
-  application:
-    name: kxlove-nacos-provider
-server:
-  port: ${random.int[10000,19999]}
