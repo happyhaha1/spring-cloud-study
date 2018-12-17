@@ -3,7 +3,6 @@ val JAVA_SPRING_PROJECTS = arrayOf("nacos-discovery-provider", "nacos-discovery-
 
 plugins {
     java
-    kotlin("jvm") version "1.3.10"
     id("org.springframework.boot") version Versions.springBoot apply false
     `maven-publish`
     idea
