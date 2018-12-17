@@ -22,5 +22,6 @@ object Libs {
     val springCloudBom = "org.springframework.cloud:spring-cloud-dependencies:${Versions.springCloud}"
     val springCloudAliBabaBom = "org.springframework.cloud:spring-cloud-alibaba-dependencies:${Versions.springCloudAliBaba}"
     val NacosDiscovery = "org.springframework.cloud:spring-cloud-starter-alibaba-nacos-discovery"
+    val NacosConfig = "org.springframework.cloud:spring-cloud-starter-alibaba-nacos-config"
     val SpringBootWeb = "org.springframework.boot:spring-boot-starter-web"
 }
