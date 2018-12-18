@@ -1,19 +1,19 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
-plugins {
-    application
-    kotlin("jvm")
-}
-
-
-application {
-    mainClassName = "cn.kxlove.Main"
-}
-
+//import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+//
+//plugins {
+//    application
+//    kotlin("jvm")
+//}
+//
+//
+//application {
+//    mainClassName = "cn.kxlove.Main"
+//}
+//
 dependencies {
     compile(kotlin("stdlib"))
 }
-
+//
 tasks.jar {
     manifest {
         attributes(
@@ -29,8 +29,8 @@ tasks.jar {
         from(zipTree(jar))
     }
 }
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-    destinationDir = file("$buildDir/classes/main")
-}
+//tasks.withType<KotlinCompile> {
+//    kotlinOptions.jvmTarget = "1.8"
+//    destinationDir = file("$buildDir/classes/main")
+//}
 

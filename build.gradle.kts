@@ -1,4 +1,6 @@
+import groovy.xml.dom.DOMCategory.attributes
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.util.*
 
 val JAVA_PROJECTS = subprojects.filter {
@@ -8,6 +10,10 @@ val JAVA_PROJECTS = subprojects.filter {
 
 val JAVA_SPRING_PROJECTS = subprojects.filter {
     file("${it.projectDir}/src/main/resources/application.properties").exists()
+}
+
+val Kotlin_PROJECTS = subprojects.filter {
+    file("${it.projectDir}/src/main/kotlin").exists()
 }
 
 plugins {
@@ -105,6 +111,16 @@ configure(JAVA_SPRING_PROJECTS) {
                 "Change active profile to $profile"
             )
         }
+    }
+}
+
+configure(Kotlin_PROJECTS) {
+    apply {
+        plugin("kotlin")
+    }
+    tasks.withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = ProjectConstant.javaVerion
+        destinationDir = file("$buildDir/classes/main")
     }
 }
 
