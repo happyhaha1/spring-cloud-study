@@ -98,7 +98,6 @@ configure(JAVA_SPRING_PROJECTS) {
         description = "Some meaningful words"
         var profile: String? = project.findProperty("Env") as String?
         doLast {
-            SqlTask.test()
             if (profile == null) {
                 profile = "company"
             }
