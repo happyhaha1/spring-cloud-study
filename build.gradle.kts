@@ -39,7 +39,7 @@ subprojects {
             classifier = "sources"
         }
         val javadocJar by tasks.creating(Jar::class) {
-            from(tasks.get("javadoc"))
+            from(tasks["javadoc"])
             classifier = "javadoc"
         }
         artifacts.add("archives",sourcesJar)

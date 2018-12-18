@@ -1,12 +1,10 @@
-import org.gradle.api.internal.HasConvention
-import org.jetbrains.kotlin.gradle.plugin.KotlinBasePluginWrapper
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     application
     kotlin("jvm")
 }
+
 
 application {
     mainClassName = "cn.kxlove.Main"
@@ -16,5 +14,23 @@ dependencies {
     compile(kotlin("stdlib"))
 }
 
-
+tasks.jar {
+    manifest {
+        attributes(
+            "Main-Class" to "cn.kxlove.Main"
+        )
+    }
+    val sourceSets: SourceSetContainer by project
+    val sourceMain = sourceSets["main"]
+    from(sourceMain.output)
+    configurations.runtimeClasspath.get().filter {
+        it.name.endsWith(".jar")
+    }.forEach { jar ->
+        from(zipTree(jar))
+    }
+}
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "1.8"
+    destinationDir = file("$buildDir/classes/main")
+}
 
