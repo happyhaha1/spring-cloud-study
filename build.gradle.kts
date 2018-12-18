@@ -9,7 +9,8 @@ val JAVA_PROJECTS = subprojects.filter {
 }
 
 val JAVA_SPRING_PROJECTS = subprojects.filter {
-    file("${it.projectDir}/src/main/resources/application.properties").exists()
+    file("${it.projectDir}/src/main/resources/application.properties").exists() ||
+            file("${it.projectDir}/src/main/resources/bootstrap.properties").exists()
 }
 
 val Kotlin_PROJECTS = subprojects.filter {
@@ -96,20 +97,9 @@ configure(JAVA_SPRING_PROJECTS) {
     }
     tasks.named("processResources") {
         description = "Some meaningful words"
-        var profile: String? = project.findProperty("Env") as String?
+        val profile: String? = project.findProperty("Env") as String?
         doLast {
-            if (profile == null) {
-                profile = "company"
-            }
-            val properties = Properties()
-
-            val ymlFile = file("src/main/resources/application.properties")
-            properties.load(ymlFile.inputStream())
-            properties["spring.profiles.active"] = profile
-            properties.store(
-                file("build/classes/main/application.properties").outputStream(),
-                "Change active profile to $profile"
-            )
+            Profile.change(profile)
         }
     }
 }
