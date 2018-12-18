@@ -16,6 +16,10 @@ object Versions {
     val springBoot = "2.0.3.RELEASE"
     val springCloud = "Finchley.SR2"
     val springCloudAliBaba = "0.2.0.RELEASE"
+    val aliBaBaSpringBootDubbo = "0.2.0"
+    val nacosClient = "0.7.0"
+    val nacosDubboRegistry = "0.0.2"
+    val nettyAll = "4.1.24.Final"
 }
 
 object Libs {
@@ -24,4 +28,8 @@ object Libs {
     val NacosDiscovery = "org.springframework.cloud:spring-cloud-starter-alibaba-nacos-discovery"
     val NacosConfig = "org.springframework.cloud:spring-cloud-starter-alibaba-nacos-config"
     val SpringBootWeb = "org.springframework.boot:spring-boot-starter-web"
+    val SpringBootDubbo = "com.alibaba.boot:dubbo-spring-boot-starter:${Versions.aliBaBaSpringBootDubbo}"
+    val NacosClient = "com.alibaba.nacos:nacos-client:${Versions.nacosClient}"
+    val NacosDubboRegistry = "com.alibaba:dubbo-registry-nacos:${Versions.nacosDubboRegistry}"
+    val NettyAll = "io.netty:netty-all:${Versions.nettyAll}"
 }
