@@ -9,5 +9,9 @@ package cn.kxlove
  * @since 2018-12-17 16:18
  */
 fun main(args: Array<String>) {
-    println("Hello word!!!")
+    val nameToTeam = listOf("Alice" to "Marketing", "Bob" to "Sales", "Carol" to "Marketing")
+
+    val mutableNamesByTeam = nameToTeam.groupByTo(HashMap(), { it.second }, { it.first })
+    println(mutableNamesByTeam)
+
 }
