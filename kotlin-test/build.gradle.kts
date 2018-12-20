@@ -12,6 +12,12 @@
 //
 dependencies {
     compile(kotlin("stdlib"))
+    testImplementation(Libs.KotlinTest)
+    constraints {
+        testImplementation(Libs.KotlinStdlib)
+        testImplementation(Libs.KotlinStdlibJdk7)
+        testImplementation(Libs.KotlinReflect)
+    }
 }
 //
 tasks.jar {
@@ -28,6 +34,9 @@ tasks.jar {
     }.forEach { jar ->
         from(zipTree(jar))
     }
+}
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
 //tasks.withType<KotlinCompile> {
 //    kotlinOptions.jvmTarget = "1.8"

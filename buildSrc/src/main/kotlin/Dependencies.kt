@@ -20,9 +20,13 @@ object Versions {
     val nacosClient = "0.7.0"
     val nacosDubboRegistry = "0.0.2"
     val nettyAll = "4.1.24.Final"
+    val kotlinTest = "3.1.11"
 }
 
 object Libs {
+    val KotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+    val KotlinStdlibJdk7 = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+    val KotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
     val springCloudBom = "org.springframework.cloud:spring-cloud-dependencies:${Versions.springCloud}"
     val springCloudAliBabaBom = "org.springframework.cloud:spring-cloud-alibaba-dependencies:${Versions.springCloudAliBaba}"
     val NacosDiscovery = "org.springframework.cloud:spring-cloud-starter-alibaba-nacos-discovery"
@@ -32,4 +36,5 @@ object Libs {
     val NacosClient = "com.alibaba.nacos:nacos-client:${Versions.nacosClient}"
     val NacosDubboRegistry = "com.alibaba:dubbo-registry-nacos:${Versions.nacosDubboRegistry}"
     val NettyAll = "io.netty:netty-all:${Versions.nettyAll}"
+    val KotlinTest = "io.kotlintest:kotlintest-runner-junit5:${Versions.kotlinTest}"
 }
