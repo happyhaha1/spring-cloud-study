@@ -32,6 +32,7 @@ object Libs {
     val NacosDiscovery = "org.springframework.cloud:spring-cloud-starter-alibaba-nacos-discovery"
     val NacosConfig = "org.springframework.cloud:spring-cloud-starter-alibaba-nacos-config"
     val SpringBootWeb = "org.springframework.boot:spring-boot-starter-web"
+    val SpringTestStart = "org.springframework.boot:spring-boot-starter-test"
     val SpringBootDubbo = "com.alibaba.boot:dubbo-spring-boot-starter:${Versions.aliBaBaSpringBootDubbo}"
     val NacosClient = "com.alibaba.nacos:nacos-client:${Versions.nacosClient}"
     val NacosDubboRegistry = "com.alibaba:dubbo-registry-nacos:${Versions.nacosDubboRegistry}"

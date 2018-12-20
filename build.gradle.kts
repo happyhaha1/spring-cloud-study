@@ -1,7 +1,11 @@
 import groovy.xml.dom.DOMCategory.attributes
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
+import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.exclude
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.util.*
+
+fun Project.dependencies(configuration: DependencyHandlerScope.() -> Unit) =
+    DependencyHandlerScope.of(dependencies).configuration()
 
 val JAVA_PROJECTS = subprojects.filter {
     file("${it.projectDir}/src/main/java").exists() ||
@@ -84,6 +88,10 @@ configure(JAVA_PROJECTS) {
             }
         }
     }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
 }
 
 configure(JAVA_SPRING_PROJECTS) {
@@ -95,6 +103,14 @@ configure(JAVA_SPRING_PROJECTS) {
             mavenBom(Libs.springCloudAliBabaBom)
         }
     }
+    val testImplementation by configurations
+
+    dependencies {
+        testImplementation(Libs.SpringTestStart) {
+            exclude(module = "junit")
+        }
+    }
+
     tasks.named("processResources") {
         description = "Some meaningful words"
         val profile: String? = project.findProperty("Env") as String?
@@ -107,6 +123,18 @@ configure(JAVA_SPRING_PROJECTS) {
 configure(Kotlin_PROJECTS) {
     apply {
         plugin("kotlin")
+    }
+    val implementation by configurations
+    val testImplementation by configurations
+//    val compileOnly by configurations
+    dependencies {
+        implementation(kotlin("stdlib"))
+        testImplementation(Libs.KotlinTest)
+        constraints {
+            testImplementation(Libs.KotlinStdlib)
+            testImplementation(Libs.KotlinStdlibJdk7)
+            testImplementation(Libs.KotlinReflect)
+        }
     }
     tasks.withType<KotlinCompile> {
         kotlinOptions.jvmTarget = ProjectConstant.javaVerion

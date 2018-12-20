@@ -6,6 +6,7 @@ include(
     "naocs-duboo-provider",
     "nacos-common-res",
     "nacos-dubbo-facde",
-    "naocs-duboo-consumer"
+    "naocs-duboo-consumer",
+    "spring-boot-kotlin"
 )
 
