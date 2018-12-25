@@ -137,7 +137,10 @@ configure(Kotlin_PROJECTS) {
         }
     }
     tasks.withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = ProjectConstant.javaVerion
+        kotlinOptions {
+            jvmTarget = ProjectConstant.javaVerion
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+        }
         destinationDir = file("$buildDir/classes/main")
     }
 }

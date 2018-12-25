@@ -34,8 +34,13 @@ object Libs {
     val SpringBootWeb = "org.springframework.boot:spring-boot-starter-web"
     val SpringTestStart = "org.springframework.boot:spring-boot-starter-test"
     val SpringBootDubbo = "com.alibaba.boot:dubbo-spring-boot-starter:${Versions.aliBaBaSpringBootDubbo}"
+    val SpringBootJpa = "org.springframework.boot:spring-boot-starter-data-jpa"
+    val H2DataBase = "com.h2database:h2"
     val NacosClient = "com.alibaba.nacos:nacos-client:${Versions.nacosClient}"
     val NacosDubboRegistry = "com.alibaba:dubbo-registry-nacos:${Versions.nacosDubboRegistry}"
     val NettyAll = "io.netty:netty-all:${Versions.nettyAll}"
     val KotlinTest = "io.kotlintest:kotlintest-runner-junit5:${Versions.kotlinTest}"
+    val JunitJupiterApi = "org.junit.jupiter:junit-jupiter-api"
+    val JunitJupiterEngine = "org.junit.jupiter:junit-jupiter-engine"
+
 }
