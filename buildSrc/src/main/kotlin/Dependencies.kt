@@ -21,6 +21,8 @@ object Versions {
     val nacosDubboRegistry = "0.0.2"
     val nettyAll = "4.1.24.Final"
     val kotlinTest = "3.1.11"
+    val rxjava = "2.2.4"
+    val kotlinxCoroutines = "1.1.0"
 }
 
 object Libs {
@@ -42,5 +44,6 @@ object Libs {
     val KotlinTest = "io.kotlintest:kotlintest-runner-junit5:${Versions.kotlinTest}"
     val JunitJupiterApi = "org.junit.jupiter:junit-jupiter-api"
     val JunitJupiterEngine = "org.junit.jupiter:junit-jupiter-engine"
-
+    val RxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxjava}"
+    val KotlinxCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinxCoroutines}"
 }

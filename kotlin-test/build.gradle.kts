@@ -11,7 +11,8 @@
 //}
 //
 dependencies {
-    
+    implementation(Libs.RxJava)
+    implementation(Libs.KotlinxCoroutines)
 }
 //
 tasks.jar {
