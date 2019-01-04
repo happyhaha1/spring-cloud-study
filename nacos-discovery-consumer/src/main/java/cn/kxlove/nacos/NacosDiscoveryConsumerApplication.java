@@ -1,18 +1,17 @@
 package cn.kxlove.nacos;
 
+import cn.kxlove.nacos.service.EchoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.context.annotation.Bean;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * <p>NacosDiscoveryApplicaiton</p>
@@ -22,13 +21,8 @@ import org.springframework.web.client.RestTemplate;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableFeignClients
 public class NacosDiscoveryConsumerApplication {
-
-    @LoadBalanced
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(NacosDiscoveryConsumerApplication.class, args);
@@ -38,17 +32,20 @@ public class NacosDiscoveryConsumerApplication {
     @RefreshScope
     public class TestController {
 
-        private final RestTemplate restTemplate;
+        private final EchoService echoService;
 
         @Value("${useLocalCache:false}")
         private boolean useLocalCache;
 
         @Autowired
-        public TestController(RestTemplate restTemplate) {this.restTemplate = restTemplate;}
+        public TestController(EchoService echoService) {
+            this.echoService = echoService;
+        }
 
         @RequestMapping(value = "/echo/{str}", method = RequestMethod.GET)
         public String echo(@PathVariable String str) {
-            return restTemplate.getForObject("http://kxlove-nacos-provider/echo/" + str, String.class)+useLocalCache;
+//            return restTemplate.getForObject("http://kxlove-nacos-provider/echo/" + str, String.class)+useLocalCache;
+            return "happyhaha"+useLocalCache;
         }
     }
 }

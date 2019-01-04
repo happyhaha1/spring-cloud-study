@@ -15,7 +15,7 @@ object Versions {
     val springManagement = "1.0.6.RELEASE"
     val springBoot = "2.0.3.RELEASE"
     val springCloud = "Finchley.SR2"
-    val springCloudAliBaba = "0.2.0.RELEASE"
+    val springCloudAliBaba = "0.2.1.RELEASE"
     val aliBaBaSpringBootDubbo = "0.2.0"
     val nacosClient = "0.7.0"
     val nacosDubboRegistry = "0.0.2"
@@ -46,4 +46,5 @@ object Libs {
     val JunitJupiterEngine = "org.junit.jupiter:junit-jupiter-engine"
     val RxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxjava}"
     val KotlinxCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinxCoroutines}"
+    val SpringCloudOpenFeign = "org.springframework.cloud:spring-cloud-starter-openfeign"
 }

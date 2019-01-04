@@ -64,17 +64,18 @@ configure(JAVA_PROJECTS) {
         setSourceCompatibility(ProjectConstant.javaVerion)
         setTargetCompatibility(ProjectConstant.javaVerion)
     }
-
     configure<SourceSetContainer> {
         named("main") {
             java.outputDir = file("$buildDir/classes/main")
-            output.setResourcesDir(file("$buildDir/classes/main"))
+//            output.setResourcesDir(file("$buildDir/classes/main"))
         }
         named("test") {
             java.outputDir = file("$buildDir/classes/test")
-            output.setResourcesDir(file("$buildDir/classes/test"))
+//            output.setResourcesDir(file("$buildDir/classes/test"))
         }
     }
+//    project.the<SourceSetContainer>() ["main"].java.outputDir = file("$buildDir/classes/main")
+//    project.the<SourceSetContainer>() ["test"].java.outputDir = file("$buildDir/classes/test")
     configure<PublishingExtension> {
         publications {
             create<MavenPublication>(project.name) {
