@@ -47,4 +47,6 @@ object Libs {
     val RxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxjava}"
     val KotlinxCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinxCoroutines}"
     val SpringCloudOpenFeign = "org.springframework.cloud:spring-cloud-starter-openfeign"
+    val SpringCloudAliBabaSentinel = "org.springframework.cloud:spring-cloud-starter-alibaba-sentinel"
+    val RibbonStart = "org.springframework.cloud:spring-cloud-starter-netflix-ribbon"
 }
