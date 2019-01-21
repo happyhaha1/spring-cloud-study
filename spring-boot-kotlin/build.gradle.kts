@@ -6,6 +6,7 @@ plugins {
 dependencies {
     implementation(Libs.KotlinReflect)
     implementation(Libs.SpringBootWeb)
+    implementation(Libs.SpringBootActuator)
     implementation(Libs.SpringBootJpa)
     runtimeOnly(Libs.H2DataBase)
     testImplementation(Libs.JunitJupiterApi)

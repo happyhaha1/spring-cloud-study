@@ -37,6 +37,7 @@ object Libs {
     val SpringTestStart = "org.springframework.boot:spring-boot-starter-test"
     val SpringBootDubbo = "com.alibaba.boot:dubbo-spring-boot-starter:${Versions.aliBaBaSpringBootDubbo}"
     val SpringBootJpa = "org.springframework.boot:spring-boot-starter-data-jpa"
+    val SpringBootActuator = "org.springframework.boot:spring-boot-starter-actuator"
     val H2DataBase = "com.h2database:h2"
     val NacosClient = "com.alibaba.nacos:nacos-client:${Versions.nacosClient}"
     val NacosDubboRegistry = "com.alibaba:dubbo-registry-nacos:${Versions.nacosDubboRegistry}"

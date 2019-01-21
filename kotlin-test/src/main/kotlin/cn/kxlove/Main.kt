@@ -37,11 +37,11 @@ fun main(args: Array<String>) {
 //    println(list.isNotEmpty())
 //    val create = MyClass()
 //    multiply(10,z = 10)
-    val items = listOf("one" to BigDecimal.ONE,
-        "two" to BigDecimal.ONE,
-        "null" to null)
-    val sumAmount = items.mapNotNull { it.second }.fold(BigDecimal.ZERO, BigDecimal::add)
-    print(sumAmount)
+//    val items = listOf("one" to BigDecimal.ONE,
+//        "two" to BigDecimal.ONE,
+//        "null" to null)
+//    val sumAmount = items.mapNotNull { it.second }.fold(BigDecimal.ZERO, BigDecimal::add)
+//    print(sumAmount)
 
 //    val items = listOf(1, 2, 3, 4, 5)
 
@@ -56,6 +56,14 @@ fun main(args: Array<String>) {
 //        result
 //    }
 //    items.reduce { 0, i ->  }
+
+    val one = BigDecimal.valueOf(0)
+    val two = BigDecimal.TEN
+    if (one >= two) {
+        println("equal")
+    }else {
+        println("not")
+    }
 }
 
 fun multiply(x: Int, y: Int = 10, z: Int = 20 ) : Int {

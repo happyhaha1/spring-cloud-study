@@ -4,7 +4,6 @@ import cn.kxlove.modle.User
 import cn.kxlove.repository.UserRepository
 import org.slf4j.LoggerFactory
 import org.springframework.boot.CommandLineRunner
-import org.springframework.boot.WebApplicationType
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
@@ -57,6 +56,6 @@ fun main(args: Array<String>) {
 //        .web(WebApplicationType.NONE)
 //        .run(*args)
     runApplication<SpringBootKotlinApplication>(*args) {
-        webApplicationType = WebApplicationType.NONE
+//        webApplicationType = WebApplicationType.NONE
     }
 }
